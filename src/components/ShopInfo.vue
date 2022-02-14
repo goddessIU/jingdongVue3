@@ -3,7 +3,7 @@
         <div>
             <img :src="item.imgUrl" class="shop_img" />
         </div>
-        <div class="shop_content">
+        <div :class="{'shop_border-bottom': hideBorder, shop_content}">
             <div class="shop_content_title">{{ item.name }}</div>
             <div class="shop_content_tags">
                 <span class="shop__content__tag">月售: {{ item.sales }}</span>
@@ -16,8 +16,9 @@
 </template>
 
 <script setup>
-const props = defineProps(['item'])
+const props = defineProps(['item', 'hideBorder'])
 const item = props.item;
+const hideBorder = props.hideBorder;
 </script>
 
 <style lang="scss" scoped>
@@ -32,7 +33,6 @@ const item = props.item;
     }
     &_content {
         flex: 1;
-        border-bottom: 0.01rem solid #f1f1f1;
         &_title {
             line-height: 0.22rem;
             font-size: 0.16rem;
@@ -54,5 +54,8 @@ const item = props.item;
             line-height: 0.18rem;
         }
     }
+    &_border-bottom {
+        border-bottom: 0.01rem solid #f1f1f1;
+    } 
 }
 </style>

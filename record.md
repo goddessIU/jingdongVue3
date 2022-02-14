@@ -43,3 +43,7 @@ viriables.scss 一些特殊css处理，如字体颜色，等使用时导出，�
 </div>
 ```
 因为图片需要加载，所以要为其占位，否则下方内容会抖动。heigth: 0让wrapper这个div没有高度，即只是占位，不影响img。padding 与 margin用%计算时，都是按照父元素宽度算。所以width： 100%让wrapper和父元素一个宽度。padding-bottom为图片宽高比，为图片预留了一个高度
+
+## margin负值
+https://zhuanlan.zhihu.com/p/25892372
+
