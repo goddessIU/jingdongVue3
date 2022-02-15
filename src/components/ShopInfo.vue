@@ -3,7 +3,7 @@
         <div>
             <img :src="item.imgUrl" class="shop_img" />
         </div>
-        <div :class="{'shop_border-bottom': hideBorder, shop_content}">
+        <div :class="{'shop_border-bottom': hideBorder, shop_content: true}">
             <div class="shop_content_title">{{ item.name }}</div>
             <div class="shop_content_tags">
                 <span class="shop__content__tag">月售: {{ item.sales }}</span>

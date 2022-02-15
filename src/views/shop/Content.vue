@@ -20,9 +20,12 @@
                     </p>
                 </div>
                 <div class="product_number">
-                    <span class="product_number_minus iconfont">&#xe656;</span>
-                    <!-- {{ getProductCartCount(shopId, item._id) }} -->
-                    <span class="product_number_plus iconfont">&#xe726;</span>
+                    <span class="product_number_minus iconfont"
+                    @click="changeCartItemCount(shopId, item._id, item, -1)"
+                    >&#xe656;</span>
+                    {{ getProductCartCount(shopId, item._id) }}
+                    <span class="product_number_plus iconfont"
+                    @click="changeCartItemCount(shopId, item._id, item, 1)">&#xe726;</span>
                 </div>
             </div>
         </div>
@@ -31,7 +34,7 @@
 
 <script setup>
 import { reactive, ref, watchEffect, toRefs } from 'vue';
-import { useRoute, useRouter } from 'vue-router';
+import { useCommonCartEffect } from './useCartEffect';
 import { get } from '../../utils/request';
 
 const categories = [
@@ -48,12 +51,10 @@ const useTabEffect = () => {
     return { currentTab, changeTab };
 }
 
-const useCurrentListEffect = (currentTab) => {
+const useCurrentListEffect = (currentTab, shopId) => {
     const content = reactive({ list: {} })
-    const route = useRoute();
-    const id = route.params.id;
     const getContentData = async () => {
-        const result = await get(`/api/shop/${id}/products`, {
+        const result = await get(`/api/shop/${shopId}/products`, {
             tab: currentTab.value
         })
         if (result.errno === 0 && result.data.length) {
@@ -65,8 +66,11 @@ const useCurrentListEffect = (currentTab) => {
     return { list }
 }
 
+
+
 const { currentTab, changeTab } = useTabEffect();
 const { list } = useCurrentListEffect(currentTab);
+const { getProductCartCount, cartList, shopId, changeCartItemCount } = useCommonCartEffect();
 </script>
 
 <style scoped lang="scss">

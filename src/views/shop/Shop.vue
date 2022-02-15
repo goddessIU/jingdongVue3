@@ -9,6 +9,7 @@
         </div>
         <ShopInfo :item="item" :hideBorder="false" />
         <Content />
+        <Cart />
     </div>
 </template>
 
@@ -20,6 +21,7 @@ import { get } from '../../utils/request'
 
 import ShopInfo from '../../components/ShopInfo.vue';
 import Content from './Content.vue';
+import Cart from './Cart.vue';
 
 const useBackEffect = () => {
     const router = useRouter();
@@ -54,7 +56,7 @@ const { handleBackClick } = useBackEffect();
 .wrapper {
     padding: 0 0.18rem;
     box-sizing: border-box;
-
+    // position: relative;
     .search {
         margin: 0.16rem 0;
         display: flex;
