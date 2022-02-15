@@ -1,22 +1,23 @@
 <template>
     <div class="docker">
-        <div 
+        <router-link
             :class="{'docker_item': true, 'docker_item--active': index === 0}"
             v-for="(item, index) in dockerList" 
             :key="index"
+            :to="item.to"
         >
             <div class="iconfont" v-html="item.icon"></div>
             <div class="docker_title">{{item.text}}</div>
-        </div>
+        </router-link>
     </div>
 </template>
 
 <script setup>
 const dockerList = [
-    {icon: '&#xe696;', text: '首页'},
-    {icon: '&#xe698;', text: '购物车'},
-    {icon: '&#xe645;', text: '订单'},
-    {icon: '&#xe7ae;', text: '我的'},
+    {icon: '&#xe696;', text: '首页',   to: '/'},
+    {icon: '&#xe698;', text: '购物车', to: '/cart'},
+    {icon: '&#xe645;', text: '订单',   to: '/order'},
+    {icon: '&#xe7ae;', text: '我的',   to: '/user'},
 ]
 </script>
 
@@ -37,6 +38,8 @@ const dockerList = [
     &_item {
         flex: 1;
         text-align: center;
+        text-decoration: none;
+        color: #333333;
         .iconfont {
             margin: 0.07rem 0 0.02rem 0;
             font-size: 0.2rem;

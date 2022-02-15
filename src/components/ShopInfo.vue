@@ -1,7 +1,7 @@
 <template>
     <div class="shop">
         <div>
-            <img :src="item.imgUrl" class="shop_img" />
+            <img src="../assets/banner.png" class="shop_img" />
         </div>
         <div :class="{'shop_border-bottom': hideBorder, shop_content: true}">
             <div class="shop_content_title">{{ item.name }}</div>

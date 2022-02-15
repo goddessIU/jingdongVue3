@@ -1,4 +1,4 @@
-# 首页制作
+记录学习过程中，学到的新知识
 ## BEM
 ```html
 <div class="docker">
@@ -47,3 +47,22 @@ viriables.scss 一些特殊css处理，如字体颜色，等使用时导出，�
 ## margin负值
 https://zhuanlan.zhihu.com/p/25892372
 
+## 真机调试
+vite: 
+package.json 中
+dev改成 vite --host 0.0.0.0
+或者viteconfig中加入
+server： {
+    host: '0.0.0.0'
+}
+然后npm run dev， 几个network挨个试
+防火墙关闭
+
+vue-cli直接npm， 就有network
+
+## 适配不同大小屏幕
+对于本项目
+var width = document.documentElement.clientWidth || document.body.clientWidth;
+      var ratio = width /375;
+      var fontSize = 100 * ratio;
+      document.getElementsByTagName('html')[0].style['font-size'] = fontSize + 'px';
